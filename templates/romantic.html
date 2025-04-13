@@ -3,51 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для моей любимой Софии</title>
+    <title>Для Софии с любовью</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400&display=swap');
+        
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: 'Montserrat', sans-serif;
+            background: url('https://i.pinimg.com/originals/8b/f4/c4/8bf4c4b34e2f4a5f9e0d9f9e9f9e9f9e.jpg') no-repeat center center fixed;
+            background-size: cover;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #5d3a3a;
             overflow: hidden;
+            position: relative;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 192, 203, 0.3);
+            z-index: 0;
         }
         
         .container {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 25px;
             padding: 40px;
-            max-width: 600px;
+            max-width: 500px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             position: relative;
-            overflow: hidden;
+            z-index: 1;
             animation: fadeIn 1.5s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         h1 {
-            font-size: 2.5em;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
             margin-bottom: 20px;
             color: #e84393;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-weight: 300;
         }
         
         .signature {
-            font-style: italic;
-            font-size: 1.3em;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em;
             margin-top: 30px;
             color: #e84393;
             font-weight: bold;
+        }
+        
+        .photo-frame {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #e84393;
+            margin: 0 auto 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .coffee {
+            position: absolute;
+            width: 40px;
+            opacity: 0.7;
+            animation: float 8s linear infinite;
+        }
+        
+        .bird {
+            position: absolute;
+            width: 50px;
+            opacity: 0.9;
+            animation: fly 15s linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+        
+        @keyframes fly {
+            0% {
+                transform: translateX(-100px) translateY(50px);
+            }
+            50% {
+                transform: translateX(50vw) translateY(-20px);
+            }
+            100% {
+                transform: translateX(100vw) translateY(50px);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .hearts {
@@ -67,72 +148,41 @@
             animation: float 6s ease-in-out infinite;
         }
         
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .photo-frame {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid #e84393;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .wine-glass {
+            position: absolute;
+            font-size: 30px;
+            color: rgba(156, 39, 176, 0.6);
+            animation: float 10s linear infinite;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="photo-frame">
-            <!-- Замените src на путь к фото Софии -->
-            <img src="https://i.pinimg.com/originals/8e/47/2a/8e472a9d7f6d5e5e4e0a8a8a8a8a8a8a.jpg" alt="София">
-        </div>
+    <div class="overlay"></div>
+    
+    <div class="photo-frame">
+        <img src="{{ url_for('static', filename='sofia.jpg') }}" alt="София">
+    </div>
         
-        <h1>Для моей единственной Софии</h1>
+        <h1>Моя любимая София</h1>
         
-        <p>Каждый момент с тобой - как страница из самой прекрасной сказки. Ты наполняешь мою жизнь светом, теплом и смыслом.</p>
+        <p>Ты - самое прекрасное, что случалось со мной. Каждый день с тобой наполнен счастьем и теплом.</p>
         
-        <p>Твоя улыбка - это солнце, которое освещает даже самые пасмурные дни. Твой смех - самая прекрасная мелодия, которую я хочу слышать вечно.</p>
+        <p>Твоя улыбка - это солнце, которое освещает даже самые пасмурные дни.</p>
         
-        <p>Когда наши руки соприкасаются, весь мир вокруг замирает, и остаемся только мы - два сердца, бьющихся в унисон.</p>
-        
-        <p>Я благодарен судьбе за каждый день, проведенный рядом с тобой, и с нетерпением жду всех моментов, которые нам еще предстоит пережить вместе.</p>
-        
-        <div class="signature">С любовью, твой Ифтихор ❤️</div>
-        
-        <div class="hearts" id="hearts"></div>
+        <div class="signature">С любовью Ифтихор ❤️</div>
     </div>
 
+    <!-- Элементы декора -->
+    <img src="https://cdn-icons-png.flaticon.com/512/2515/2515183.png" class="bird" style="top: 20%; left: -50px; animation-delay: 0s;">
+    <img src="https://cdn-icons-png.flaticon.com/512/2515/2515183.png" class="bird" style="top: 70%; left: -50px; animation-delay: 5s;">
+    <img src="https://cdn-icons-png.flaticon.com/512/924/924514.png" class="coffee" style="top: 100vh; left: 20%;">
+    <img src="https://cdn-icons-png.flaticon.com/512/3058/3058991.png" class="wine-glass" style="top: 100vh; left: 70%; font-size: 40px;">
+    
     <script>
         // Создаем летающие сердечки
         function createHearts() {
-            const heartsContainer = document.getElementById('hearts');
-            const heartsCount = 20;
+            const body = document.body;
+            const heartsCount = 15;
             
             for (let i = 0; i < heartsCount; i++) {
                 const heart = document.createElement('div');
@@ -147,12 +197,35 @@
                 heart.style.animationDelay = Math.random() * 5 + 's';
                 heart.style.animationDuration = 3 + Math.random() * 4 + 's';
                 
-                heartsContainer.appendChild(heart);
+                body.appendChild(heart);
             }
         }
         
         // Запускаем создание сердечек при загрузке страницы
-        window.onload = createHearts;
+        window.onload = function() {
+            createHearts();
+            
+            // Добавляем еще несколько элементов декора
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const coffee = document.createElement('img');
+                    coffee.src = 'https://cdn-icons-png.flaticon.com/512/924/924514.png';
+                    coffee.className = 'coffee';
+                    coffee.style.left = Math.random() * 100 + '%';
+                    coffee.style.top = '100vh';
+                    coffee.style.animationDuration = 8 + Math.random() * 7 + 's';
+                    document.body.appendChild(coffee);
+                    
+                    const wine = document.createElement('div');
+                    wine.innerHTML = '🍷';
+                    wine.className = 'wine-glass';
+                    wine.style.left = Math.random() * 100 + '%';
+                    wine.style.top = '100vh';
+                    wine.style.animationDuration = 10 + Math.random() * 5 + 's';
+                    document.body.appendChild(wine);
+                }, i * 2000);
+            }
+        };
     </script>
 </body>
 </html>
