@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для моей любимой Софии</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #5d3a3a;
+            overflow: hidden;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #e84393;
+        }
+        
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .signature {
+            font-style: italic;
+            font-size: 1.3em;
+            margin-top: 30px;
+            color: #e84393;
+            font-weight: bold;
+        }
+        
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(232, 67, 147, 0.6);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .photo-frame {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #e84393;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="photo-frame">
+            <!-- Замените src на путь к фото Софии -->
+            <img src="https://i.pinimg.com/originals/8e/47/2a/8e472a9d7f6d5e5e4e0a8a8a8a8a8a8a.jpg" alt="София">
+        </div>
+        
+        <h1>Для моей единственной Софии</h1>
+        
+        <p>Каждый момент с тобой - как страница из самой прекрасной сказки. Ты наполняешь мою жизнь светом, теплом и смыслом.</p>
+        
+        <p>Твоя улыбка - это солнце, которое освещает даже самые пасмурные дни. Твой смех - самая прекрасная мелодия, которую я хочу слышать вечно.</p>
+        
+        <p>Когда наши руки соприкасаются, весь мир вокруг замирает, и остаемся только мы - два сердца, бьющихся в унисон.</p>
+        
+        <p>Я благодарен судьбе за каждый день, проведенный рядом с тобой, и с нетерпением жду всех моментов, которые нам еще предстоит пережить вместе.</p>
+        
+        <div class="signature">С любовью, твой Ифтихор ❤️</div>
+        
+        <div class="hearts" id="hearts"></div>
+    </div>
+
+    <script>
+        // Создаем летающие сердечки
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heartsCount = 20;
+            
+            for (let i = 0; i < heartsCount; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.classList.add('heart');
+                
+                // Случайная позиция
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                
+                // Случайная задержка анимации
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.animationDuration = 3 + Math.random() * 4 + 's';
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Запускаем создание сердечек при загрузке страницы
+        window.onload = createHearts;
+    </script>
+</body>
+</html>
